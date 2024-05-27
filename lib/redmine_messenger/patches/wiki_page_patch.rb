@@ -21,12 +21,6 @@ module RedmineMessenger
 
           return unless channels.present? && url
 
-#          if Messenger.setting_for_project project, :messenger_direct_users_messages
-#            messenger_to_be_notified.each do |user|
-#              channels.append "@#{user.login}" unless user == User.current
-#            end
-#          end
-
           initial_language = ::I18n.locale
           begin
             set_language_if_valid Setting.default_language
