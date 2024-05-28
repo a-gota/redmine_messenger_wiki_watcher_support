@@ -1,6 +1,6 @@
 # Japanese strings
 ja:
-  default_mentionsl_info: Default people to notify, comma separated (e.g. @all, @here)
+  default_mentionsl_info: 'デフォルトで通知するユーザをカンマ区切りで指定してください。（例: 「@all, @here」）'
   label_messenger_contact_created: "%{project_url} - コンタクト %{url} が *%{user}* によって作成されました。"
   label_messenger_contact_updated: "%{project_url} - コンタクト %{url} が*%{user}* によって更新されました。"
   label_messenger_db_entry_created: "%{project_url} - DB entry %{url} created by *%{user}*"
@@ -20,13 +20,14 @@ ja:
   label_messenger_wiki_updated: "%{project_url} - Wiki %{url} が *%{user}* によって更新されました。"
   label_messenger: メッセンジャー
   label_settings_auto_mentions: ユーザー名をその人についての投稿(@ユーザー名)に変換する
-  label_settings_default_mentions: Default people for mentions
+  label_settings_default_mentions: デフォルトでメンションするユーザ
   label_settings_display_watchers: ウォッチャーを表示する
   label_settings_messenger_channel: メッセンジャーのチャンネル
   label_settings_messenger_icon: メッセンジャーのアイコン
   label_settings_messenger_url: メッセンジャーのURL
   label_settings_messenger_username: メッセンジャーのユーザー名
   label_settings_messenger_verify_ssl: SSL証明書の検証
+  label_settings_messenger_direct_users_messages: ダイレクトメッセージを送信する
   label_settings_new_include_description: チケット作成時に説明を含める
   label_settings_post_contact_updates: コンタクトの更新
   label_settings_post_contact: コンタクトの作成
@@ -51,5 +52,6 @@ ja:
   messenger_settings_project_intro: メッセンジャーのURLを指定しない場合、管理者が指定したチャンネルにメッセージが送信されます。(管理者がチャンネルを指定していない場合は、空欄にすると機能は無効になります)
   messenger_url_info_html: 'メッセンジャー サービスで <a target="_blank" href="https://github.com/AlphaNodes/redmine_messenger#prepare-your-messenger-service">内向きのウェブフック</a>のURLを作成して下さい。プロジェクト毎に設定を変えたい場合は空欄として下さい。'
   messenger_verify_ssl_info_html: 'メッセンジャー サービスが自己署名証明書や不正な証明書を使っている場合、無効として下さい。'
+  messenger_direct_users_messages_info_html: '有効にすると、チャンネルと同様に各ユーザへのHTTPリクエストを送信します（ユーザ名はチャンネル名と同様に扱われます。ただし、RocketChatへはダイレクトメッセージとなります）。'
   messenger_wiki_intro: メッセンジャーに送信するWikiのイベントにチェックを入れて下さい。
   permission_manage_messenger: メッセンジャーの管理
