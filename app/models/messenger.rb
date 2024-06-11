@@ -116,6 +116,64 @@ class Messenger
       default_project_channels proj
     end
 
+    def channels_for_project_wiki_added(proj)
+      return [] if proj.blank?
+
+      Rails.logger.warn "XXXX redmine_messenger::channels_for_project_wiki_added called"
+      # project based
+      pm = proj.messenger_setting
+      if pm.nil?
+        Rails.logger.warn "XXXX pm not present"
+      else
+        if pm.post_wiki_to_messenger_channel?
+          Rails.logger.warn "XXXX post_wiki_to_messenger_channel == true"
+          if pm.messenger_channel.present?
+            Rails.logger.warn "XXXX messenger_channel: " + pm.messenger_channel
+            return [] if pm.messenger_channel == '-'
+            return pm.messenger_channel.split(',').map!(&:strip).uniq
+          end
+        else
+          Rails.logger.warn "XXXX post_wiki_to_messenger_channel == false"
+          if pm.post_wiki_channel.present?
+            Rails.logger.warn "XXXX post_wiki_channel: " + pm.post_wiki_channel
+            return [] if pm.post_wiki_channel == '-'
+            return pm.post_wiki_channel.split(',').map!(&:strip).uniq
+          end
+          []
+        end
+      end
+      default_project_wiki_added_channels proj
+    end
+
+    def channels_for_project_wiki_updated(proj)
+      return [] if proj.blank?
+
+      Rails.logger.warn "XXXX redmine_messenger::channels_for_project_wiki_updated called"
+      # project based
+      pm = proj.messenger_setting
+      if pm.nil?
+        Rails.logger.warn "XXXX pm not present"
+      else
+        if pm.post_wiki_updates_to_messenger_channel?
+          Rails.logger.warn "XXXX post_wiki_updates_to_messenger_channel == true"
+          if pm.messenger_channel.present?
+            Rails.logger.warn "XXXX messenger_channel: " + pm.messenger_channel
+            return [] if pm.messenger_channel == '-'
+            return pm.messenger_channel.split(',').map!(&:strip).uniq
+          end
+        else
+          Rails.logger.warn "XXXX post_wiki_updates_to_messenger_channel == false"
+          if pm.post_wiki_updates_channel.present?
+            Rails.logger.warn "XXXX post_wiki_updates_channel: " + pm.post_wiki_updates_channel
+            return [] if pm.post_wiki_updates_channel == '-'
+            return pm.post_wiki_updates_channel.split(',').map!(&:strip).uniq
+          end
+          []
+        end
+      end
+      default_project_wiki_updated_channels proj
+    end
+
     def setting_for_project(proj, config)
       return false if proj.blank?
 
@@ -283,6 +341,70 @@ class Messenger
       if RedmineMessenger.setting(:messenger_channel).present? &&
          RedmineMessenger.setting(:messenger_channel) != '-'
         return RedmineMessenger.setting(:messenger_channel).split(',').map!(&:strip).uniq
+      end
+
+      []
+    end
+
+    def default_project_wiki_added_channels(proj)
+      Rails.logger.warn "XXXX redmine_messenger::default_project_wiki_added_channels called"
+      if RedmineMessenger.setting(:post_wiki_to_messenger_channel).present?
+        Rails.logger.warn "XXXX post_wiki_to_messenger_channel: " + RedmineMessenger.setting(:post_wiki_to_messenger_channel).to_s
+      else
+        Rails.logger.warn "XXXX post_wiki_to_messenger_channel not present"
+      end
+      if !proj.parent.nil?
+        Rails.logger.warn "XXXX proj.parent: " + proj.parent
+        # parent project based
+        parent_channel = channels_for_project_wiki_added proj.parent
+        return parent_channel if parent_channel.present?
+      end
+      # system based
+      if RedmineMessenger.setting(:post_wiki_to_messenger_channel).present? &&
+         RedmineMessenger.setting(:post_wiki_to_messenger_channel) != 0
+        if RedmineMessenger.setting(:messenger_channel).present? &&
+           RedmineMessenger.setting(:messenger_channel) != '-'
+          Rails.logger.warn "XXXX messenger_channel: " + RedmineMessenger.setting(:messenger_channel)
+          return RedmineMessenger.setting(:messenger_channel).split(',').map!(&:strip).uniq
+        end
+      else
+        if RedmineMessenger.setting(:post_wiki_channel).present? &&
+           RedmineMessenger.setting(:post_wiki_channel) != '-'
+          Rails.logger.warn "XXXX post_wiki_channel: " + RedmineMessenger.setting(:post_wiki_channel)
+          return RedmineMessenger.setting(:post_wiki_channel).split(',').map!(&:strip).uniq
+        end
+      end
+
+      []
+    end
+
+    def default_project_wiki_updated_channels(proj)
+      Rails.logger.warn "XXXX redmine_messenger::default_project_wiki_updated_channels called"
+      if RedmineMessenger.setting(:post_wiki_updates_to_messenger_channel).present?
+        Rails.logger.warn "XXXX post_wiki_updates_to_messenger_channel: " + RedmineMessenger.setting(:post_wiki_updates_to_messenger_channel).to_s
+      else
+        Rails.logger.warn "XXXX post_wiki_updates_to_messenger_channel not present"
+      end
+      if !proj.parent.nil?
+        Rails.logger.warn "XXXX proj.parent: " + proj.parent
+        # parent project based
+        parent_channel = channels_for_project_wiki_updated proj.parent
+        return parent_channel if parent_channel.present?
+      end
+      # system based
+      if RedmineMessenger.setting(:post_wiki_updates_to_messenger_channel).present? &&
+         RedmineMessenger.setting(:post_wiki_updates_to_messenger_channel) != 0
+        if RedmineMessenger.setting(:messenger_channel).present? &&
+           RedmineMessenger.setting(:messenger_channel) != '-'
+          Rails.logger.warn "XXXX messenger_channel: " + RedmineMessenger.setting(:messenger_channel)
+          return RedmineMessenger.setting(:messenger_channel).split(',').map!(&:strip).uniq
+        end
+      else
+        if RedmineMessenger.setting(:post_wiki_updates_channel).present? &&
+           RedmineMessenger.setting(:post_wiki_updates_channel) != '-'
+          Rails.logger.warn "XXXX post_wiki_updates_channel: " + RedmineMessenger.setting(:post_wiki_updates_channel)
+          return RedmineMessenger.setting(:post_wiki_updates_channel).split(',').map!(&:strip).uniq
+        end
       end
 
       []

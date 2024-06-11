@@ -41,7 +41,17 @@ en:
   label_settings_post_private_notes: Private notes updates?
   label_settings_post_updates: Issue updates?
   label_settings_post_wiki_updates: Wiki updates?
+  label_settings_wiki_updates_notify: Settings of notify Wiki updates
   label_settings_post_wiki: Post Wiki added?
+  label_settings_wiki_added_notify: Settings of notify Wiki added
+  label_settings_post_wiki_to_messenger_channel: Notify to messenger channel if post Wiki added?
+  post_wiki_to_messenger_channel_info: 'If enabled, Messenger will notify to the messenger channel when post Wiki added instead of the next setting.'
+  label_settings_post_wiki_channel: Channel to be notified if post Wiki added
+  post_wiki_channel_info: 'You can define multiple channels, seperated by comma'
+  label_settings_post_wiki_updates_to_messenger_channel: Notify to messenger channel if Wiki updates?
+  post_wiki_updates_to_messenger_channel_info: 'If enabled, Messenger will notify to the messenger channel when Wiki updated instead of the next setting.'
+  label_settings_post_wiki_updates_channel: Channel to be notified if Wiki updates
+  label_settings_post_wiki_updates_to_watcher: Notify to watcher if Wiki updates?
   label_settings_updated_include_description: Description in update issue?
   messenger_channel_info_html: 'Here you have to specify the channel, which should be used. You can define multiple channels, seperated by comma'
   messenger_contacts_intro: Activate the changes for Issues that should be sent to the pre-defined Messenger channel.

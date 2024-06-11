@@ -16,7 +16,7 @@ module RedmineMessenger
         def send_messenger_create
           return unless Messenger.setting_for_project project, :post_wiki
 
-          channels = Messenger.channels_for_project project
+          channels = Messenger.channels_for_project_wiki_added project
           url = Messenger.url_for_project project
 
           return unless channels.present? && url
@@ -38,10 +38,10 @@ module RedmineMessenger
         def send_messenger_update
           return unless Messenger.setting_for_project project, :post_wiki_updates
 
-          channels = Messenger.channels_for_project project
+          channels = Messenger.channels_for_project_wiki_updated project
           url = Messenger.url_for_project project
 
-          if Messenger.setting_for_project project, :messenger_direct_users_messages
+          if Messenger.setting_for_project project, :post_wiki_updates_to_watcher
             self.notified_watchers.each do |user|
               channels.append "@#{user.login}" unless user == content.author
             end

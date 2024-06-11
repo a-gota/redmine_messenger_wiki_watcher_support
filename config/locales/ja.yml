@@ -41,7 +41,17 @@ ja:
   label_settings_post_private_notes: プライベート注記の更新
   label_settings_post_updates: チケットの更新
   label_settings_post_wiki_updates: Wikiの更新
+  label_settings_wiki_updates_notify: Wiki更新時の通知先設定
   label_settings_post_wiki: Wikiの作成
+  label_settings_wiki_added_notify: Wiki作成時の通知先設定
+  label_settings_post_wiki_to_messenger_channel: Wikiの作成をメッセンジャーのチャンネルへ通知する
+  post_wiki_to_messenger_channel_info: 有効にすると、Wikiの作成を次の設定ではなくメッセンジャーのチャンネルへ通知します。
+  label_settings_post_wiki_channel: Wikiの作成を通知するチャンネル
+  post_wiki_channel_info: 複数のチャンネルを指定する場合は,(カンマ)で区切って下さい。
+  label_settings_post_wiki_updates_to_messenger_channel: Wikiの更新をメッセンジャーのチャンネルへ通知する
+  post_wiki_updates_to_messenger_channel_info: 有効にすると、Wikiの更新を次の設定ではなくメッセンジャーのチャンネルへ通知します。
+  label_settings_post_wiki_updates_channel: Wikiの更新を通知するチャンネル
+  label_settings_post_wiki_updates_to_watcher: Wikiの更新をウォッチャーへ通知する
   label_settings_updated_include_description: チケット更新時に説明を含める
   messenger_channel_info_html: チャンネルを指定する必要があります。複数のチャンネルを指定する場合は,(カンマ)で区切って下さい。
   messenger_contacts_intro: メッセンジャーに送信するチケットのイベントにチェックを入れて下さい。

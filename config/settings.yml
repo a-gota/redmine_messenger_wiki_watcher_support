@@ -17,7 +17,12 @@ post_private_db: 0
 post_private_issues: 0
 post_private_notes: 0
 post_wiki: 0
+post_wiki_channel: ''
+post_wiki_to_messenger_channel: 0
 post_wiki_updates: 0
+post_wiki_updates_channel: ''
+post_wiki_updates_to_messenger_channel: 0
+post_wiki_updates_to_watcher: 0
 post_db: 0
 post_db_updates: 0
 post_contact: 0
